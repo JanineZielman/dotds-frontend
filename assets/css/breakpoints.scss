@@ -1,0 +1,121 @@
+@media only screen and (max-width: 900px) {
+  nav{
+    font-size: 18px;
+    width: 95%;
+    padding-top: 5px;
+    margin-left: 2.5%;
+    .logo{
+      width: auto;
+    }
+    .links{
+      width: 50%;
+      justify-content: end;
+      & a:nth-child(2),  & a:nth-child(3){
+        display: none;
+      }
+    }
+  }
+  .filter-search{
+    top: 37px;
+  }
+  .button{
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .all-info{
+    column-count: 1;
+  }
+  .object-page {
+    .main-info{
+      width: 100%;
+    }
+    .image-scroll{
+      width: 90%;
+      margin-left: 5%;
+    }
+  }
+  .grid{
+    .object{
+      width: 100%;
+    }
+    .list{
+      margin-top: 10px;
+      span.small{
+        width: 10vw;
+        margin: 0 2vw;
+      }
+      span.wide{
+        width: 40vw;
+      }
+      .object{
+        margin: 10px 0;
+      }
+    }
+  }
+  .color-dot-wrapper{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    div{
+      margin: auto;
+    }
+    span{
+      display: none;
+    }
+  }
+  .desktop-only{
+    display: none;
+  }
+  .top-bar{
+    max-width: 85%;
+  }
+  .filter{
+    display: none;
+  }
+  .landing{
+    flex-direction: column-reverse;
+    width: 90%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    .description{
+      width: 100%;
+      position: relative;
+      margin-top: 24px;
+      span{
+        position: relative;
+        width: 100%;
+        left: 0;
+      }
+    }
+    .hug{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  .footer-text{
+    width: 90%;
+    margin-top: 100px;
+    margin-bottom: 14px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+}
+
+@media only screen and (min-width: 1600px) {
+  .list{
+    span.small{
+      font-size: 16px;
+    }
+    .color-dot{
+      width: 16px;
+      height: 16px;
+    }
+    .object .content{
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+}
