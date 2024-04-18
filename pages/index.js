@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 
-const Home = ({ step1 }) => {
+const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
   function getStep1(event) {
     event.target.classList.toggle('active');
     document.getElementById("active-1").appendChild(event.target);
@@ -106,7 +106,6 @@ const Home = ({ step1 }) => {
     window.location.href = current + '&step6=' + input.replaceAll('undefined', '').replaceAll('...', '');
   }
 
-  console.log(step1)
   return (
     <Layout>
       <div id="topbar"></div>
@@ -134,7 +133,7 @@ const Home = ({ step1 }) => {
         <div className="balls" id="balls">
           {step1.map((item1, i) => {
             return(
-              <li className="ball" onClick={getStep1}>{item1.attributes.Slug}</li>
+              <li className="ball" key={`step1${i}`} onClick={getStep1}>{item1.attributes.Slug}</li>
             )
           })}
         </div>
@@ -154,27 +153,11 @@ const Home = ({ step1 }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep2}>website</li>
-          <li className="ball" onClick={getStep2}>web-app</li>
-          <li className="ball" onClick={getStep2}>code</li>
-          <li className="ball" onClick={getStep2}>document</li>
-          <li className="ball" onClick={getStep2}>prototype</li>
-          <li className="ball" onClick={getStep2}>experiment</li>
-          <li className="ball" onClick={getStep2}>presentation</li>
-          <li className="ball" onClick={getStep2}>audio fragment</li>
-          <li className="ball" onClick={getStep2}>book</li>
-          <li className="ball" onClick={getStep2}>image</li>
-          <li className="ball" onClick={getStep2}>research</li>
-          <li className="ball" onClick={getStep2}>documentation</li>
-          <li className="ball" onClick={getStep2}>project</li>
-          <li className="ball" onClick={getStep2}>visualization</li>
-          <li className="ball" onClick={getStep2}>process</li>
-          <li className="ball" onClick={getStep2}>interaction</li>
-          <li className="ball" onClick={getStep2}>dissemination</li>
-          <li className="ball" onClick={getStep2}>animation</li>
-          <li className="ball" onClick={getStep2}>film</li>
-          <li className="ball" onClick={getStep2}>model</li>
-          <li className="ball" onClick={getStep2}>essay</li>
+          {step2.map((item2, i) => {
+            return(
+              <li className="ball" key={`step2${i}`} onClick={getStep2}>{item2.attributes.Slug}</li>
+            )
+          })}
         </div>
 
       </div>
@@ -192,9 +175,11 @@ const Home = ({ step1 }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep3}>knowledge</li>
-          <li className="ball" onClick={getStep3}>understanding</li>
-          <li className="ball" onClick={getStep3}>ability</li>
+          {step3.map((item3, i) => {
+            return(
+              <li className="ball" key={`step3${i}`} onClick={getStep3}>{item3.attributes.Slug}</li>
+            )
+          })}
         </div>
 
       </div>
@@ -212,20 +197,11 @@ const Home = ({ step1 }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep4}>code</li>
-          <li className="ball" onClick={getStep4}>write</li>
-          <li className="ball" onClick={getStep4}>animate</li>
-          <li className="ball" onClick={getStep4}>prototype</li>
-          <li className="ball" onClick={getStep4}>research</li>
-          <li className="ball" onClick={getStep4}>analyse</li>
-          <li className="ball" onClick={getStep4}>typeset</li>
-          <li className="ball" onClick={getStep4}>reflect</li>
-          <li className="ball" onClick={getStep4}>develop</li>
-          <li className="ball" onClick={getStep4}>plan</li>
-          <li className="ball" onClick={getStep4}>interact</li>
-          <li className="ball" onClick={getStep4}>interpret</li>
-          <li className="ball" onClick={getStep4}>plan</li>
-          <li className="ball" onClick={getStep4}>explore</li>
+          {step4.map((item4, i) => {
+            return(
+              <li className="ball" key={`step4${i}`} onClick={getStep4}>{item4.attributes.Slug}</li>
+            )
+          })}
         </div>
       </div>    
 
@@ -242,19 +218,11 @@ const Home = ({ step1 }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep5}>text</li>
-          <li className="ball" onClick={getStep5}>information</li>
-          <li className="ball" onClick={getStep5}>content</li>
-          <li className="ball" onClick={getStep5}>type</li>
-          <li className="ball" onClick={getStep5}>layout</li>
-          <li className="ball" onClick={getStep5}>html</li>
-          <li className="ball" onClick={getStep5}>css</li>
-          <li className="ball" onClick={getStep5}>php</li>
-          <li className="ball" onClick={getStep5}>illustrator</li>
-          <li className="ball" onClick={getStep5}>photoshop</li>
-          <li className="ball" onClick={getStep5}>indesign</li>
-          <li className="ball" onClick={getStep5}>cinema4d</li>
-          <li className="ball" onClick={getStep5}>blender</li>
+          {step5.map((item5, i) => {
+            return(
+              <li className="ball" key={`step5${i}`} onClick={getStep5}>{item5.attributes.Slug}</li>
+            )
+          })}
         </div>
       </div> 
 
@@ -271,11 +239,11 @@ const Home = ({ step1 }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep6}>extensive</li>
-          <li className="ball" onClick={getStep6}>significant</li>
-          <li className="ball" onClick={getStep6}>confident</li>
-          <li className="ball" onClick={getStep6}>sound</li>
-          <li className="ball" onClick={getStep6}>adequate</li>
+          {step6.map((item6, i) => {
+            return(
+              <li className="ball" key={`step6${i}`} onClick={getStep6}>{item6.attributes.Slug}</li>
+            )
+          })}
         </div>
       </div> 
 
@@ -290,14 +258,25 @@ const Home = ({ step1 }) => {
 
 export async function getServerSideProps() {
 
-  const [step1Res] = await Promise.all([
+  const [step1Res, step2Res, step3Res, step4Res, step5Res, step6Res] = await Promise.all([
     fetchAPI("/step-1s?populate=*"),
+    fetchAPI("/step-2s?populate=*"),
+    fetchAPI("/step-3s?populate=*"),
+    fetchAPI("/step-4s?populate=*"),
+    fetchAPI("/step-5s?populate=*"),
+    fetchAPI("/step-6s?populate=*"),
+    
   ])
 
 
   return {
     props: {
       step1: step1Res.data,
+      step2: step2Res.data,
+      step3: step3Res.data,
+      step4: step4Res.data,
+      step5: step5Res.data,
+      step6: step6Res.data,
     }
   }
 }

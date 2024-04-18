@@ -50,7 +50,7 @@ function initBalls() {
 
 // Moves the balls based on their direction/speed of movement (saved as a data attribute). If the movement will take them outside of the container, they reverse direction along that axis.
 function moveBalls() {
-  var maxX = container.width(),
+  var maxX = container.width() - 200,
       maxY = container.height();
   $('li',container).each(function(i,b) {
     var ball = $(b),

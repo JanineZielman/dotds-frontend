@@ -148,6 +148,12 @@ h2{
   width: fit-content;
   display: inline-block;
   margin: 0;
+  -webkit-box-shadow: 10px 10px 19px -4px rgba(34,34,34,0.75);
+  -moz-box-shadow: 10px 10px 19px -4px rgba(34,34,3,0.75);
+  box-shadow: 10px 10px 19px -4px rgba(34,34,3,0.75);
+  &.active{
+    margin-left: 10px;
+  }
 }
 
 .wrapper{
