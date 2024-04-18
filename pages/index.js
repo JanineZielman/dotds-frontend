@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 
-const Home = ({  }) => {
+const Home = ({ step1 }) => {
   function getStep1(event) {
     event.target.classList.toggle('active');
     document.getElementById("active-1").appendChild(event.target);
@@ -105,6 +105,8 @@ const Home = ({  }) => {
     }
     window.location.href = current + '&step6=' + input.replaceAll('undefined', '').replaceAll('...', '');
   }
+
+  console.log(step1)
   return (
     <Layout>
       <div id="topbar"></div>
@@ -130,10 +132,11 @@ const Home = ({  }) => {
         </div>
 
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep1}>show</li>
-          <li className="ball" onClick={getStep1}>present</li>
-          <li className="ball" onClick={getStep1}>hand in</li>
-          <li className="ball" onClick={getStep1}>deliver</li>
+          {step1.map((item1, i) => {
+            return(
+              <li className="ball" onClick={getStep1}>{item1.attributes.Slug}</li>
+            )
+          })}
         </div>
 
       </div>
@@ -277,7 +280,7 @@ const Home = ({  }) => {
       </div> 
 
       <div id="result">
-        <h2 id="final-text"></h2>
+        <h2 contentEditable id="final-text"></h2>
       </div>
 
       <div className="overlay"></div>
@@ -285,19 +288,18 @@ const Home = ({  }) => {
   )
 }
 
-// export async function getServerSideProps() {
+export async function getServerSideProps() {
 
-//   const [objectRes] = await Promise.all([
-//     fetchAPI("/objects?populate=*&sort=createdAt:desc"),
-//   ])
+  const [step1Res] = await Promise.all([
+    fetchAPI("/step-1s?populate=*"),
+  ])
 
-//   const numberOfPosts = objectRes.meta.pagination.total;
 
-//   return {
-//     props: {
-//       objects: objectRes.data,
-//     }
-//   }
-// }
+  return {
+    props: {
+      step1: step1Res.data,
+    }
+  }
+}
 
 export default Home
