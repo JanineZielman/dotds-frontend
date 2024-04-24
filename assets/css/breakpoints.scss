@@ -20,4 +20,13 @@
   .canvas .next{
     font-size: 20px;
   }
+  .buttons{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .button{
+     width: fit-content;
+     margin-bottom: 24px;
+    }
+  }
 }

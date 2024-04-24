@@ -222,12 +222,15 @@ h2{
   margin-top: 100px;
   .button{
     border: 1px solid white;
-    padding: 6px 40px;
+    padding: 10px 40px;
     border-radius: 25px;
     transition: all 0.4s ease;
     cursor: pointer;
     display: flex;
     align-items: center;
+    a{
+      line-height: 1;
+    }
     &:hover{
       background-color: white;
       color: #222;
