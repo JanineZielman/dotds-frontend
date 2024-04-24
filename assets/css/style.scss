@@ -148,9 +148,9 @@ h2{
   width: fit-content;
   display: inline-block;
   margin: 0;
-  -webkit-box-shadow: 10px 10px 19px -4px rgba(34,34,34,0.75);
-  -moz-box-shadow: 10px 10px 19px -4px rgba(34,34,3,0.75);
-  box-shadow: 10px 10px 19px -4px rgba(34,34,3,0.75);
+  -webkit-box-shadow: 10px 10px 19px -4px rgba(34,34,34,1);
+  -moz-box-shadow: 10px 10px 19px -4px rgba(34,34,3,1);
+  box-shadow: 10px 10px 19px -4px rgba(34,34,3,1);
   &.active{
     margin-left: 10px;
   }
@@ -196,11 +196,13 @@ h2{
 	}
 	.next{
 		text-align: right;
-		width: 100%;
+		width: fit-content;
 		display: block;
 		font-size: 30px;
 		cursor: pointer;
 		margin-top: 24px;
+    margin-left: auto;
+    margin-right: 0;
 	}
 }
 
@@ -210,4 +212,28 @@ h2{
   font-size: 32px;
   color: #fff;
   width: 100%;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 900px;
+  margin: auto;
+  margin-top: 100px;
+  .button{
+    border: 1px solid white;
+    padding: 6px 40px;
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover{
+      background-color: white;
+      color: #222;
+      a{
+        color: #222;
+      }
+    }
+  }
 }

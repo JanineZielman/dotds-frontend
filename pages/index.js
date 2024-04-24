@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
+import Link from "next/link"
 
 const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
   function getStep1(event) {
@@ -15,10 +16,17 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-1");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
-      
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
     }
-    window.location.href = current +  '&step1=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current +  '&step1=' + input.replaceAll('undefined', '-').replaceAll('...', '');
   }
   
   function getStep2(event) {
@@ -32,10 +40,17 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-2");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
-      
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
     }
-    window.location.href = current + '&step2=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current + '&step2=' + input.replaceAll('undefined', '-').replaceAll('...', '');
   }
   
   function getStep3(event) {
@@ -49,10 +64,18 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-3");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
       
     }
-    window.location.href = current + '&step3=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current + '&step3=' + input.replaceAll('undefined', '-').replaceAll('...', '');
   }
   
   function getStep4(event) {
@@ -66,10 +89,18 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-4");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
       
     }
-    window.location.href = current + '&step4=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current + '&step4=' + input.replaceAll('undefined', '-').replaceAll('...', '');
   }
   
   function getStep5(event) {
@@ -83,10 +114,18 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-5");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
       
     }
-    window.location.href = current + '&step5=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current + '&step5=' + input.replaceAll('undefined', '-').replaceAll('...', '');
   }
   
   function getStep6(event) {
@@ -100,10 +139,22 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     selected = document.getElementById("active-6");
     let active = selected.getElementsByClassName('active');
     for (i = 0; i < active.length; i++) {
-      input += `${active[i].innerText} `;
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
       
     }
-    window.location.href = current + '&step6=' + input.replaceAll('undefined', '').replaceAll('...', '');
+    window.location.href = current + '&step6=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+  }
+
+  function refresh(){
+    location.reload();
   }
 
   return (
@@ -133,7 +184,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step1.map((item1, i) => {
             return(
-              <li className="ball" key={`step1${i}`} onClick={getStep1}>{item1.attributes.Slug}</li>
+              <li className="ball" key={`step1${i}`} onClick={getStep1}>{item1.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -155,7 +206,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step2.map((item2, i) => {
             return(
-              <li className="ball" key={`step2${i}`} onClick={getStep2}>{item2.attributes.Slug}</li>
+              <li className="ball" key={`step2${i}`} onClick={getStep2}>{item2.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -177,7 +228,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step3.map((item3, i) => {
             return(
-              <li className="ball" key={`step3${i}`} onClick={getStep3}>{item3.attributes.Slug}</li>
+              <li className="ball" key={`step3${i}`} onClick={getStep3}>{item3.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -199,7 +250,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step4.map((item4, i) => {
             return(
-              <li className="ball" key={`step4${i}`} onClick={getStep4}>{item4.attributes.Slug}</li>
+              <li className="ball" key={`step4${i}`} onClick={getStep4}>{item4.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -220,7 +271,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step5.map((item5, i) => {
             return(
-              <li className="ball" key={`step5${i}`} onClick={getStep5}>{item5.attributes.Slug}</li>
+              <li className="ball" key={`step5${i}`} onClick={getStep5}>{item5.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -241,7 +292,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         <div className="balls" id="balls">
           {step6.map((item6, i) => {
             return(
-              <li className="ball" key={`step6${i}`} onClick={getStep6}>{item6.attributes.Slug}</li>
+              <li className="ball" key={`step6${i}`} onClick={getStep6}>{item6.attributes.Slug.replaceAll('_', ' ')}</li>
             )
           })}
         </div>
@@ -249,6 +300,10 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
 
       <div id="result">
         <h2 contentEditable id="final-text"></h2>
+        <div className="buttons">
+          <div className="button" onClick={refresh}>Re-generate</div>
+          <div className="button"><a href={`/`}>Start over</a></div>
+        </div>
       </div>
 
       <div className="overlay"></div>

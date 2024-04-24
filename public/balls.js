@@ -36,8 +36,8 @@ function initBalls() {
     newBall.css({
       'position':'absolute',
 
-      'background-color': 'rgb('+rand(0,255,true)+','+rand(0
-                                                           ,255,true)+','+rand(0,                                                                  
+      'background-color': 'rgb('+rand(50,255,true)+','+rand(50
+                                                           ,255,true)+','+rand(50,                                                                  
                                                                                255,true)+')',
       'top': rand(0,container.height()-size),
       'left': rand(0,container.width()-size)
