@@ -287,4 +287,12 @@ footer{
 #result{
   text-align: center;
   max-width: 950px;
+  display: none;
+}
+
+.ball{
+  span{
+    font-size: 0;
+    width: 0;
+  }
 }

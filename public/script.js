@@ -13,12 +13,23 @@ window.addEventListener("load", (event) => {
   const urlParams = new URLSearchParams(queryString);
   const start = urlParams.get('start')
   const step0 = urlParams.get('step0')
+  const step01 = urlParams.get('step01')
   const step1 = urlParams.get('step1')
   const step2 = urlParams.get('step2')
   const step3 = urlParams.get('step3')
   const step4 = urlParams.get('step4')
   const step5 = urlParams.get('step5')
   const step6 = urlParams.get('step6')
+
+
+  const subjectIds = urlParams.get('subjectIds')
+  const yearIds = urlParams.get('yearIds')
+  const step1Ids = urlParams.get('step1Ids')
+  const step2Ids = urlParams.get('step2Ids')
+  const step3Ids = urlParams.get('step3Ids')
+  const step4Ids = urlParams.get('step4Ids')
+  const step5Ids = urlParams.get('step5Ids')
+  const step6Ids = urlParams.get('step6Ids')
 
   let final;
 
@@ -91,8 +102,29 @@ window.addEventListener("load", (event) => {
     
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
-        console.log( JSON.parse(this.responseText));
         document.getElementById('final-text').innerText = JSON.parse(this.responseText).data.outputs?.[0]?.text
+
+        fetch('https://cms.didactic-syntax.org/api/results?populate=*', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: {
+              goal: JSON.parse(this.responseText).data.outputs?.[0]?.text,
+              years: yearIds.split(',').map(Number),
+              subjects: subjectIds.split(',').map(Number),
+              step_1s: step1Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_2s: step2Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_3s: step3Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_4s: step4Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_5s: step5Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_6s: step6Ids.replace('0,','').split(',').map(Number).splice(1),
+            },
+          }),
+        })
+          .then(response => response.json())
+          .then(data => console.log(data));
       }
     });
     

@@ -5,28 +5,31 @@ import Image from "../components/image"
 import Link from "next/link"
 
 const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) => {
+
   function getStep0(event) {
     event.target.classList.toggle('active');
     document.getElementById("active-0").appendChild(event.target);
   }
   
   function step0Next(){
-    var input, current, selected;
+    var subject, year, current, selected;
     current = window.location.search;
     selected = document.getElementById("active-0");
     let active = selected.getElementsByClassName('active');
+    let yearIds = [];
+    let subjectIds = [];
     for (i = 0; i < active.length; i++) {
-      if (active.length > 2){
-        if (i >= 2){
-          input += ` and ${active[i].innerText}`;
-        } else {
-          input += `${active[i].innerText}`;
-        }
-      } else {
-        input += ` ${active[i].innerText}`;
+      if(active[i].id == 'subject'){
+        subject += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
+        subjectIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
+      }
+      if(active[i].id == 'year'){
+        year += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
+        yearIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
       }
     }
-    window.location.href = current +  '&step0=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+   
+    window.location.href = current + '&subjectIds=' + subjectIds + '&yearIds=' + yearIds + '&step0=' + year.replaceAll('undefined', '') + '&step01=' + subject.replaceAll('undefined', '') ;
   }
 
   function getStep1(event) {
@@ -39,18 +42,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-1");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current +  '&step1=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
   
   function getStep2(event) {
@@ -63,18 +68,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-2");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step2=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
   
   function getStep3(event) {
@@ -87,19 +94,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-3");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
-      
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step3=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
   
   function getStep4(event) {
@@ -112,19 +120,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-4");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
-      
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step4=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
   
   function getStep5(event) {
@@ -137,19 +146,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-5");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
-      
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step5=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
   
   function getStep6(event) {
@@ -162,19 +172,20 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
     current = window.location.search;
     selected = document.getElementById("active-6");
     let active = selected.getElementsByClassName('active');
+    let itemIds = [];
     for (i = 0; i < active.length; i++) {
       if (active.length > 2){
         if (i >= 2){
-          input += ` and ${active[i].innerText}`;
+          input += ` and ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         } else {
-          input += `${active[i].innerText}`;
+          input += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
         }
       } else {
-        input += ` ${active[i].innerText}`;
+        input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
-      
+      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step6=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+    window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
   }
 
   function refresh(){
@@ -218,12 +229,12 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {subjects.map((subject, i) => {
             return(
-              <li className="ball" key={`step0${i}`} onClick={getStep0}>{subject.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li id="subject" className="ball" key={`step0${i}`} onClick={getStep0}>{subject.attributes.Slug.replaceAll('_', ' ')}<span>{subject.id}</span></li>
             )
           })}
           {years.map((year, i) => {
             return(
-              <li className="ball" key={`step0-year${i}`} onClick={getStep0}>{year.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li id="year" className="ball" key={`step0-year${i}`} onClick={getStep0}>{year.attributes.Slug.replaceAll('_', ' ')}<span>{year.id}</span></li>
             )
           })}
         </div>
@@ -245,7 +256,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step1.map((item1, i) => {
             return(
-              <li className="ball" key={`step1${i}`} onClick={getStep1}>{item1.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step1${i}`} onClick={getStep1}>{item1.attributes.Slug.replaceAll('_', ' ')}<span>{item1.id}</span></li>
             )
           })}
         </div>
@@ -267,7 +278,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step2.map((item2, i) => {
             return(
-              <li className="ball" key={`step2${i}`} onClick={getStep2}>{item2.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step2${i}`} onClick={getStep2}>{item2.attributes.Slug.replaceAll('_', ' ')}<span>{item2.id}</span></li>
             )
           })}
         </div>
@@ -289,7 +300,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step3.map((item3, i) => {
             return(
-              <li className="ball" key={`step3${i}`} onClick={getStep3}>{item3.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step3${i}`} onClick={getStep3}>{item3.attributes.Slug.replaceAll('_', ' ')}<span>{item3.id}</span></li>
             )
           })}
         </div>
@@ -311,7 +322,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step4.map((item4, i) => {
             return(
-              <li className="ball" key={`step4${i}`} onClick={getStep4}>{item4.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step4${i}`} onClick={getStep4}>{item4.attributes.Slug.replaceAll('_', ' ')}<span>{item4.id}</span></li>
             )
           })}
         </div>
@@ -332,7 +343,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step5.map((item5, i) => {
             return(
-              <li className="ball" key={`step5${i}`} onClick={getStep5}>{item5.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step5${i}`} onClick={getStep5}>{item5.attributes.Slug.replaceAll('_', ' ')}<span>{item5.id}</span></li>
             )
           })}
         </div>
@@ -353,19 +364,19 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
         <div className="balls" id="balls">
           {step6.map((item6, i) => {
             return(
-              <li className="ball" key={`step6${i}`} onClick={getStep6}>{item6.attributes.Slug.replaceAll('_', ' ')}</li>
+              <li className="ball" key={`step6${i}`} onClick={getStep6}>{item6.attributes.Slug.replaceAll('_', ' ')}<span>{item6.id}</span></li>
             )
           })}
         </div>
       </div> 
 
       <div id="result">
-        <h2>Learning Outcome Suggestion based on Input</h2>
+        <p>Learning Outcome Suggestion based on Input</p>
         <h1 contentEditable id="final-text"></h1>
         <div className="buttons">
-        Show <div className="button" onClick={refresh}>Another Option</div>
-          or <div className="button"><a href={`/`}>Start Over</a></div>
-          <div className="button"><a href={`/`}>Email Me</a></div>
+        {/* Show <div className="button" onClick={refresh}>Another Option</div> */}
+          <div className="button"><a href={`/?start=true`}>Start Over</a></div>
+          {/* <div className="button"><a href={`/`}>Email Me</a></div> */}
         </div>
       </div>
 
