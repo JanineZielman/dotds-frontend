@@ -114,12 +114,24 @@ window.addEventListener("load", (event) => {
               goal: JSON.parse(this.responseText).data.outputs?.[0]?.text,
               years: yearIds.split(',').map(Number),
               subjects: subjectIds.split(',').map(Number),
-              step_1s: step1Ids.replace('0,','').split(',').map(Number).splice(1),
-              step_2s: step2Ids.replace('0,','').split(',').map(Number).splice(1),
-              step_3s: step3Ids.replace('0,','').split(',').map(Number).splice(1),
-              step_4s: step4Ids.replace('0,','').split(',').map(Number).splice(1),
-              step_5s: step5Ids.replace('0,','').split(',').map(Number).splice(1),
-              step_6s: step6Ids.replace('0,','').split(',').map(Number).splice(1),
+              step_1s: step1Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_2s: step2Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_3s: step3Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_4s: step4Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_5s: step5Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_6s: step6Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              })
             },
           }),
         })

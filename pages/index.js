@@ -53,9 +53,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       } else {
         input += ` ${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       }
-      itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
+      if (active[i].getElementsByTagName('span')[0]){
+        itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText);
+      }
     }
-    window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-1s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step1Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ').replaceAll('...', '')
+        } , 1000)
+      )
   }
   
   function getStep2(event) {
@@ -81,7 +102,27 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-2s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step2Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+        } , 1000)
+      )
+    
   }
   
   function getStep3(event) {
@@ -107,7 +148,26 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-3s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step3Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+        } , 1000)
+      )
   }
   
   function getStep4(event) {
@@ -133,7 +193,26 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-4s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step4Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+        } , 1000)
+      )
   }
   
   function getStep5(event) {
@@ -159,7 +238,26 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-5s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step5Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+        } , 1000)
+      )
   }
   
   function getStep6(event) {
@@ -185,7 +283,26 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+    fetch('https://cms.didactic-syntax.org/api/step-6s?populate=*', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          Slug: document.getElementById('step6Input')?.innerText
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(data => 
+        itemIds.push(data.data.id.toString())
+      )
+      .then(
+        setTimeout(() => {
+          window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
+        } , 1000)
+      )
   }
 
   function refresh(){
