@@ -4,7 +4,31 @@ import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 import Link from "next/link"
 
-const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
+const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) => {
+  function getStep0(event) {
+    event.target.classList.toggle('active');
+    document.getElementById("active-0").appendChild(event.target);
+  }
+  
+  function step0Next(){
+    var input, current, selected;
+    current = window.location.search;
+    selected = document.getElementById("active-0");
+    let active = selected.getElementsByClassName('active');
+    for (i = 0; i < active.length; i++) {
+      if (active.length > 2){
+        if (i >= 2){
+          input += ` and ${active[i].innerText}`;
+        } else {
+          input += `${active[i].innerText}`;
+        }
+      } else {
+        input += ` ${active[i].innerText}`;
+      }
+    }
+    window.location.href = current +  '&step0=' + input.replaceAll('undefined', '-').replaceAll('...', '');
+  }
+
   function getStep1(event) {
     event.target.classList.toggle('active');
     document.getElementById("active-1").appendChild(event.target);
@@ -157,9 +181,6 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     location.reload();
   }
 
-  function getStep0(){
-    
-  }
 
   return (
     <Layout>
@@ -172,16 +193,41 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
           <a className="next" id="how-link" href="?start=true">Start</a>
         </div>
         <div className="balls" id="balls">
-          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
-          <li className="ball" onClick={getStep0}>Dot.ds</li>
-          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
-          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
-          <li className="ball" onClick={getStep0}>Dot.ds</li>
-          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
-          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
-          <li className="ball" onClick={getStep0}>Dot.ds</li>
-          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
+          <li className="ball">Didactic Syntax</li>
+          <li className="ball">Dot.ds</li>
+          <li className="ball">Graphic Design Arnhem</li>
+          <li className="ball">Didactic Syntax</li>
+          <li className="ball">Dot.ds</li>
+          <li className="ball">Graphic Design Arnhem</li>
+          <li className="ball">Didactic Syntax</li>
+          <li className="ball">Dot.ds</li>
+          <li className="ball">Graphic Design Arnhem</li>
         </div>
+      </div>
+
+       {/* <!-- Step 0 --> */}
+       <div id="step0" className="wrapper">
+
+        <div className="canvas">
+          <h2 className="note">For which cohort are you writing a learning goal?</h2>
+          <div id="active-0"></div>
+          <div className="line"></div>
+          <div className="next" id="link1" onClick={step0Next}>Next</div>
+        </div>
+
+        <div className="balls" id="balls">
+          {subjects.map((subject, i) => {
+            return(
+              <li className="ball" key={`step0${i}`} onClick={getStep0}>{subject.attributes.Slug.replaceAll('_', ' ')}</li>
+            )
+          })}
+          {years.map((year, i) => {
+            return(
+              <li className="ball" key={`step0-year${i}`} onClick={getStep0}>{year.attributes.Slug.replaceAll('_', ' ')}</li>
+            )
+          })}
+        </div>
+
       </div>
 
       {/* <!-- Step 1 --> */}
@@ -330,7 +376,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
 
 export async function getServerSideProps() {
 
-  const [step1Res, step2Res, step3Res, step4Res, step5Res, step6Res] = await Promise.all([
+  const [yearsRes, subjectsRes, step1Res, step2Res, step3Res, step4Res, step5Res, step6Res] = await Promise.all([
+    fetchAPI("/years?populate=*"),
+    fetchAPI("/subjects?populate=*"),
     fetchAPI("/step-1s?populate=*"),
     fetchAPI("/step-2s?populate=*"),
     fetchAPI("/step-3s?populate=*"),
@@ -343,6 +391,8 @@ export async function getServerSideProps() {
 
   return {
     props: {
+      years: yearsRes.data,
+      subjects: subjectsRes.data,
       step1: step1Res.data,
       step2: step2Res.data,
       step3: step3Res.data,

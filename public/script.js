@@ -1,5 +1,6 @@
 window.addEventListener("load", (event) => {
-  document.getElementById('step1').style.visibility = 'hidden';
+  document.getElementById('step0').style.visibility = 'hidden';
+  document.getElementById('step1').style.display = 'none';
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step3').style.display = 'none';
   document.getElementById('step4').style.display = 'none';
@@ -11,6 +12,7 @@ window.addEventListener("load", (event) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const start = urlParams.get('start')
+  const step0 = urlParams.get('step0')
   const step1 = urlParams.get('step1')
   const step2 = urlParams.get('step2')
   const step3 = urlParams.get('step3')
@@ -22,7 +24,12 @@ window.addEventListener("load", (event) => {
 
   if(start){
     document.getElementById('landing-page').style.display = 'none';
-    document.getElementById('step1').style.visibility = 'visible';
+    document.getElementById('step0').style.visibility = 'visible';
+  }
+
+  if (step0){
+    document.getElementById('step0').style.display = 'none';
+    document.getElementById('step1').style.display = 'block';
   }
   
   if(step1){
