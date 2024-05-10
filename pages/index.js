@@ -4,7 +4,7 @@ import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 import Link from "next/link"
 
-const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) => {
+const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, global  }) => {
 
   function getStep0(event) {
     event.target.classList.toggle('active');
@@ -311,7 +311,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
 
 
   return (
-    <Layout>
+    <Layout global={global}>
       <div id="topbar"></div>
 
       <div id="landing-page" className="wrapper">
@@ -504,7 +504,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects  }) =>
 
 export async function getServerSideProps() {
 
-  const [yearsRes, subjectsRes, step1Res, step2Res, step3Res, step4Res, step5Res, step6Res] = await Promise.all([
+  const [yearsRes, subjectsRes, step1Res, step2Res, step3Res, step4Res, step5Res, step6Res, globalRes] = await Promise.all([
     fetchAPI("/years?populate=*"),
     fetchAPI("/subjects?populate=*"),
     fetchAPI("/step-1s?populate=*"),
@@ -513,7 +513,7 @@ export async function getServerSideProps() {
     fetchAPI("/step-4s?populate=*"),
     fetchAPI("/step-5s?populate=*"),
     fetchAPI("/step-6s?populate=*"),
-    
+    fetchAPI("/global?populate=*"),
   ])
 
 
@@ -527,6 +527,7 @@ export async function getServerSideProps() {
       step4: step4Res.data,
       step5: step5Res.data,
       step6: step6Res.data,
+      global: globalRes.data,
     }
   }
 }
