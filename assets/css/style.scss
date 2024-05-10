@@ -93,6 +93,12 @@ h2{
   font-weight: 100;
 }
 
+h1{
+  font-weight: 100;
+  // color:rgb(255, 136, 0);
+  line-height: 1.2;
+}
+
 .active{
   position: relative!important;
   top: 50%!important;
@@ -110,7 +116,7 @@ h2{
 
 #topbar{
   position: fixed;
-  top: 10px;
+  top: 14px;
   z-index: 99;
   font-size: 16px;
   text-align: center;
@@ -175,18 +181,22 @@ h2{
 }
 
 .canvas{
-  background-color: #222;
-  background: linear-gradient(0deg, rgba(34,34,34,0) 0%, rgba(34,34,34,1) 25%, rgba(34,34,34,1) 50%, rgba(34,34,34,1) 75%, rgba(34,34,34,0) 100%);
+  // background-color: rgba(22,22,22,0.75);
+  background-color: #222222d0;
+  // background: linear-gradient(0deg, rgba(34,34,34,0) 0%, rgba(34,34,34,1) 25%, rgba(34,34,34,1) 50%, rgba(34,34,34,1) 75%, rgba(34,34,34,0) 100%);
   /* border: 1px solid white; */
-  border-radius: 24px;
+  -webkit-box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  -moz-box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  border-radius: 175px;
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 1;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 800px;
-  padding: 14px;
+  max-width: 950px;
+  padding: 36px 100px;
 	.note{
 		color: #fff;
 		text-align: center;
@@ -239,4 +249,42 @@ h2{
       }
     }
   }
+}
+
+::spelling-error {
+  background-color: rgb(255, 136, 0);
+  text-decoration-line: none;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  font-size: 14px;
+  padding: 14px 0;
+  width: 100%;
+  text-align: center;
+}
+
+#insert3{
+  border-radius: 50px;
+  list-style-type: none;
+  text-transform: capitalize;
+  width: fit-content;
+  display: inline-block;
+  margin: 0;
+  background-color: lightgreen;
+  font-size: 24px;
+  border: 0;
+  line-height: 1.5;
+  text-align: center;
+  color: black;
+  padding: 0 20px;
+  -webkit-box-shadow: 10px 10px 19px -4px rgba(34,34,34,1);
+  -moz-box-shadow: 10px 10px 19px -4px rgba(34,34,3,1);
+  box-shadow: 10px 10px 19px -4px rgba(34,34,3,1);
+}
+
+#result{
+  text-align: center;
+  max-width: 950px;
 }

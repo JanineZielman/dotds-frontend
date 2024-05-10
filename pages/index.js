@@ -157,15 +157,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
     location.reload();
   }
 
+  function getStep0(){
+    
+  }
+
   return (
     <Layout>
       <div id="topbar"></div>
 
       <div id="landing-page" className="wrapper">
         <div className="canvas">
-          <h2 className="note">Compose your learning goal</h2>
+          <h2 className="note">Create a learning goal</h2>
           <div className="line"></div>
           <a className="next" id="how-link" href="?start=true">Start</a>
+        </div>
+        <div className="balls" id="balls">
+          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
+          <li className="ball" onClick={getStep0}>Dot.ds</li>
+          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
+          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
+          <li className="ball" onClick={getStep0}>Dot.ds</li>
+          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
+          <li className="ball" onClick={getStep0}>Didactic Syntax</li>
+          <li className="ball" onClick={getStep0}>Dot.ds</li>
+          <li className="ball" onClick={getStep0}>Graphic Design Arnhem</li>
         </div>
       </div>
 
@@ -281,7 +296,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
       <div id="step6" className="wrapper">
 
         <div className="canvas">
-          <h2 className="note">Define a base level for acceptable performance of this <span id="insert3"></span></h2>
+          <h2 className="note">Define a base level for acceptable performance of the demonstrated <span id="insert3"></span></h2>
           <div id="active-6">
             <span className="ball active" id="step6Input" role="textbox" contentEditable>...</span>
           </div>
@@ -299,10 +314,13 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
       </div> 
 
       <div id="result">
-        <h2 contentEditable id="final-text"></h2>
+        <h2>Learning Outcome Suggestion based on Input</h2>
+        <h1 contentEditable id="final-text"></h1>
         <div className="buttons">
-          <div className="button" onClick={refresh}>Re-generate</div>
-          <div className="button"><a href={`/`}>Start over</a></div>
+        Show <div className="button" onClick={refresh}>Another Option</div>
+          or <div className="button"><a href={`/`}>Start Over</a></div>
+          <div className="button"><a href={`/`}>Email Me</a></div>
+          <div className="button"><a href={`/`}>Add to Archive</a></div>
         </div>
       </div>
 
