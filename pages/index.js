@@ -492,7 +492,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <h1 contentEditable id="final-text"></h1>
         <div className="buttons">
         {/* Show <div className="button" onClick={refresh}>Another Option</div> */}
-          <div className="button"><a href={`/?start=true`}>Start Over</a></div>
+          <div className="button"><a href={`/?start=true`}>Another one!</a></div>
           {/* <div className="button"><a href={`/`}>Email Me</a></div> */}
         </div>
       </div>
