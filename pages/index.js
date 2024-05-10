@@ -320,7 +320,6 @@ const Home = ({ step1, step2, step3, step4, step5, step6  }) => {
         Show <div className="button" onClick={refresh}>Another Option</div>
           or <div className="button"><a href={`/`}>Start Over</a></div>
           <div className="button"><a href={`/`}>Email Me</a></div>
-          <div className="button"><a href={`/`}>Add to Archive</a></div>
         </div>
       </div>
 
