@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
-import Image from "../components/image"
-import Link from "next/link"
 
 const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, global  }) => {
 
@@ -36,6 +34,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
     event.target.classList.toggle('active');
     document.getElementById("active-1").appendChild(event.target);
   }
+
   
   function step1Next(){
     var input, current, selected;
@@ -57,26 +56,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText);
       }
     }
-    fetch('https://cms.didactic-syntax.org/api/step-1s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step1Input')?.innerText
+    if (document.getElementById('step1Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-1s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ').replaceAll('...', '')
-        } , 1000)
-      )
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step1Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ')
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ')
+    }
   }
   
   function getStep2(event) {
@@ -102,26 +105,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    fetch('https://cms.didactic-syntax.org/api/step-2s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step2Input')?.innerText
+    if (document.getElementById('step2Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-2s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
-        } , 1000)
-      )
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step2Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ');
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ');
+    } 
     
   }
   
@@ -148,26 +155,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    fetch('https://cms.didactic-syntax.org/api/step-3s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step3Input')?.innerText
+    if (document.getElementById('step3Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-3s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
-        } , 1000)
-      )
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step3Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ');
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ');
+    }
   }
   
   function getStep4(event) {
@@ -193,26 +204,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    fetch('https://cms.didactic-syntax.org/api/step-4s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step4Input')?.innerText
+    if (document.getElementById('step4Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-4s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
-        } , 1000)
-      )
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step4Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ');
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ');
+    }
   }
   
   function getStep5(event) {
@@ -238,26 +253,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    fetch('https://cms.didactic-syntax.org/api/step-5s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step5Input')?.innerText
+    if (document.getElementById('step5Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-5s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
-        } , 1000)
-      )
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step5Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ');
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ');
+    }
   }
   
   function getStep6(event) {
@@ -283,30 +302,30 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       }
       itemIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-    fetch('https://cms.didactic-syntax.org/api/step-6s?populate=*', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          Slug: document.getElementById('step6Input')?.innerText
+    if (document.getElementById('step6Input')?.innerText.length > 0){
+      fetch('https://cms.didactic-syntax.org/api/step-6s?populate=*', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => 
-        itemIds.push(data.data.id.toString())
-      )
-      .then(
-        setTimeout(() => {
-          window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ').replaceAll('...', '');
-        } , 1000)
-      )
-  }
-
-  function refresh(){
-    location.reload();
+        body: JSON.stringify({
+          data: {
+            Slug: document.getElementById('step6Input')?.innerText
+          },
+        }),
+      })
+        .then(response => response.json())
+        .then(data => 
+          itemIds.push(data.data.id.toString())
+        )
+        .then(
+          setTimeout(() => {
+            window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ');
+          } , 1000)
+        )
+    } else {
+      window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ');
+    }
   }
 
 
@@ -364,7 +383,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">At the end of this assignment, students will</h2>
           <div id="active-1">
-            <span className="ball active" id="step1Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step1Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link1" onClick={step1Next}>Next</div>
@@ -386,7 +405,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">What?</h2>
           <div id="active-2">
-            <span className="ball active" id="step2Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step2Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link2" onClick={step2Next}>Next</div>
@@ -408,7 +427,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">... demonstrating</h2>
           <div id="active-3">
-            <span className="ball active" id="step3Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step3Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link3" onClick={step3Next}>Next</div>
@@ -430,7 +449,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">... of one (or more) of these skills</h2>
           <div id="active-4">
-            <span className="ball active" id="step4Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step4Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link4" onClick={step4Next}>Next</div>
@@ -451,7 +470,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">... using these tools, situations or formats</h2>
           <div id="active-5">
-            <span className="ball active" id="step5Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step5Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link5" onClick={step5Next}>Next</div>
@@ -472,7 +491,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="canvas">
           <h2 className="note">Define a base level for acceptable performance of the demonstrated <span id="insert3"></span></h2>
           <div id="active-6">
-            <span className="ball active" id="step6Input" role="textbox" contentEditable>...</span>
+            <span className="ball active" id="step6Input" role="textbox" contentEditable></span>
           </div>
           <div className="line"></div>
           <div className="next" id="link6" onClick={step6Next}>Next</div>

@@ -1,7 +1,6 @@
 import ReactMarkdown from "react-markdown"
 
 const Layout = ({ children, global }) => {
-  console.log(global)
   function toggleMenu(){
     document.getElementById('menuIcon').classList.toggle('activeMenu');
     document.getElementById('menu').classList.toggle('activeMenu');
