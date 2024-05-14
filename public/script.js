@@ -21,7 +21,6 @@ window.addEventListener("load", (event) => {
   const step5 = urlParams.get('step5')
   const step6 = urlParams.get('step6')
 
-
   const subjectIds = urlParams.get('subjectIds')
   const yearIds = urlParams.get('yearIds')
   const step1Ids = urlParams.get('step1Ids')
@@ -31,15 +30,22 @@ window.addEventListener("load", (event) => {
   const step5Ids = urlParams.get('step5Ids')
   const step6Ids = urlParams.get('step6Ids')
 
+
   let final;
 
   if(start){
     document.getElementById('landing-page').style.display = 'none';
+    document.getElementById('landing-page').classList.add('hide');
     document.getElementById('step0').style.visibility = 'visible';
   }
 
   if (step0){
     document.getElementById('step0').style.display = 'none';
+    document.getElementById('step01').style.display = 'block';
+  }
+
+  if (step01){
+    document.getElementById('step01').style.display = 'none';
     document.getElementById('step1').style.display = 'block';
   }
   
@@ -108,39 +114,39 @@ window.addEventListener("load", (event) => {
         const jsConfetti = new JSConfetti()
         jsConfetti.addConfetti()
 
-      //   fetch('https://cms.didactic-syntax.org/api/results?populate=*', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify({
-      //       data: {
-      //         goal: JSON.parse(this.responseText).data.outputs?.[0]?.text,
-      //         years: yearIds.split(',').map(Number),
-      //         subjects: subjectIds.split(',').map(Number),
-      //         step_1s: step1Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         }),
-      //         step_2s: step2Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         }),
-      //         step_3s: step3Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         }),
-      //         step_4s: step4Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         }),
-      //         step_5s: step5Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         }),
-      //         step_6s: step6Ids.split(',').map(Number).filter(function(number) {
-      //           return number > 0;
-      //         })
-      //       },
-      //     }),
-      //   })
-      //     .then(response => response.json())
-      //     .then(data => console.log(data));
+        fetch('https://cms.didactic-syntax.org/api/results?populate=*', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: {
+              goal: JSON.parse(this.responseText).data.outputs?.[0]?.text,
+              years: yearIds.split(',').map(Number),
+              subjects: subjectIds.split(',').map(Number),
+              step_1s: step1Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_2s: step2Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_3s: step3Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_4s: step4Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_5s: step5Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              }),
+              step_6s: step6Ids.split(',').map(Number).filter(function(number) {
+                return number > 0;
+              })
+            },
+          }),
+        })
+          .then(response => response.json())
+          .then(data => console.log(data));
       }
     });
     

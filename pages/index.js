@@ -11,24 +11,36 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
   }
   
   function step0Next(){
-    var subject, year, current, selected;
+    var year, current, selected;
     current = window.location.search;
     selected = document.getElementById("active-0");
     let active = selected.getElementsByClassName('active');
     let yearIds = [];
-    let subjectIds = [];
     for (i = 0; i < active.length; i++) {
-      if(active[i].id == 'subject'){
-        subject += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
-        subjectIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
-      }
-      if(active[i].id == 'year'){
-        year += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
-        yearIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
-      }
+      year += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
+      yearIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
    
-    window.location.href = current + '&subjectIds=' + subjectIds + '&yearIds=' + yearIds + '&step0=' + year.replaceAll('undefined', '') + '&step01=' + subject.replaceAll('undefined', '') ;
+    window.location.href = current + '&yearIds=' + yearIds + '&step0=' + year.replaceAll('undefined', '') ;
+  }
+
+  function getStep01(event) {
+    event.target.classList.toggle('active');
+    document.getElementById("active-01").appendChild(event.target);
+  }
+  
+  function step01Next(){
+    var subject, current, selected;
+    current = window.location.search;
+    selected = document.getElementById("active-01");
+    let active = selected.getElementsByClassName('active');
+    let subjectIds = [];
+    for (i = 0; i < active.length; i++) {
+      subject += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
+      subjectIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
+    }
+   
+    window.location.href = current + '&subjectIds=' + subjectIds + '&step01=' + subject.replaceAll('undefined', '') ;
   }
 
   function getStep1(event) {
@@ -367,11 +379,6 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         </div>
 
         <div className="balls" id="balls">
-          {subjects.map((subject, i) => {
-            return(
-              <li id="subject" className="ball" key={`step0${i}`} onClick={getStep0}>{subject.attributes.Slug.replaceAll('_', ' ')}<span>{subject.id}</span></li>
-            )
-          })}
           {years.map((year, i) => {
             return(
               <li id="year" className="ball" key={`step0-year${i}`} onClick={getStep0}>{year.attributes.Slug.replaceAll('_', ' ')}<span>{year.id}</span></li>
@@ -380,6 +387,26 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         </div>
 
       </div>
+
+      {/* <!-- Step 01 --> */}
+      <div id="step01" className="wrapper">
+
+        <div className="canvas">
+          <h2 className="note">For which cohort are you writing a learning goal?</h2>
+          <div id="active-01"></div>
+          <div className="line"></div>
+          <div className="next" id="link1" onClick={step01Next}>Next</div>
+        </div>
+
+        <div className="balls" id="balls">
+          {subjects.map((subject, i) => {
+            return(
+              <li id="subject" className="ball" key={`step01${i}`} onClick={getStep01}>{subject.attributes.Slug.replaceAll('_', ' ')}<span>{subject.id}</span></li>
+            )
+          })}
+        </div>
+
+        </div>
 
       {/* <!-- Step 1 --> */}
       <div id="step1" className="wrapper">

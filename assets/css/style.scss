@@ -245,15 +245,17 @@ h1{
   top: 0;
   width: 100%;
   text-align: left;
-  animation-fill-mode: forwards;
-  animation: fadeIn 1s linear 0s;
+  transition: all 0.4s ease;
+  // opacity: 0;
+  // animation: fadeIn 1s linear 1;
+  // animation-fill-mode: forwards;
 }
 
 
-@keyframes fadeIn {
-  0%   {opacity: 0;}
-  100% {opacity: 1;}
-}
+// @keyframes fadeIn {
+//   0%   {opacity: 0;}
+//   100% {opacity: 1;}
+// }
 
 .canvas{
   // background-color: rgba(22,22,22,0.75);
@@ -428,3 +430,48 @@ form{
 .mail{
   background-color: orange;
 }
+
+#step0{
+  visibility: hidden;
+}
+
+#step0{
+  z-index: 850;
+}
+
+#step1{
+  z-index: 800;
+}
+
+#step2{
+  z-index: 750;
+}
+
+#step3{
+  z-index: 700;
+}
+
+#step4{
+  z-index: 650;
+}
+
+#step5{
+  z-index: 600;
+}
+
+#step6{
+  z-index: 550;
+}
+
+#result{
+  z-index: 500;
+}
+
+
+// #step1, #step2, #step3, #step4, #step5, #step6, #result{
+//   display: none;
+// } 
+
+// .hide{
+//   display: none;
+// }
