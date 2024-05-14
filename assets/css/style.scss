@@ -302,7 +302,7 @@ h1{
 .buttons{
   display: flex;
   justify-content: space-evenly;
-  max-width: 900px;
+  max-width: 600px;
   margin: auto;
   margin-top: 100px;
   .button{
@@ -370,4 +370,61 @@ footer{
     font-size: 0;
     width: 0;
   }
+}
+
+form{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+
+.submit{
+  position: fixed;
+  z-index: 999;
+  top: 100px;
+}
+
+.mail-subscribe{
+  background-color: orange;
+  width: fit-content;
+  padding: 24px;
+  border-radius: 25px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  -moz-box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  box-shadow: 0px 0px 27px 1px rgba(22,22,22,1);
+  display: none;
+  input{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    text-align: center;
+    font-size: 24px;
+  }
+  .button{
+    margin-top: 24px;
+    cursor: pointer;
+  }
+  .close{
+    text-align: right;
+    margin-bottom: 24px;
+    margin-top: -10px;
+    cursor: pointer;
+  }
+}
+
+.mail-form-info{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.restart{
+  background-color: rgb(213, 88, 255);
+}
+
+.mail{
+  background-color: orange;
 }

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
+import MailSubscribe from "../components/mailSubscribe";
 
 const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, global  }) => {
 
@@ -328,8 +329,8 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
     }
   }
 
-  function sendMail(){
-    
+  function openMail(){
+    document.getElementById('popup').style.display = 'block';
   }
 
 
@@ -353,8 +354,8 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           <li className="ball">Dot.ds</li>
           <li className="ball">Graphic Design Arnhem</li>
         </div>
-      </div>
 
+      </div>
        {/* <!-- Step 0 --> */}
        <div id="step0" className="wrapper">
 
@@ -513,10 +514,10 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <p>Learning Outcome Suggestion based on Input</p>
         <h1 contentEditable id="final-text"></h1>
         <div className="buttons">
-        {/* Show <div className="button" onClick={refresh}>Another Option</div> */}
-          <div className="button"><a href={`/?start=true`}>Another one!</a></div>
-          <div className="button" onClick={sendMail}>Email Me</div>
+          <div className="button restart"><a href={`/?start=true`}>Another one!</a></div>
+          <div className="button mail" onClick={openMail}>Email Me</div>
         </div>
+        <MailSubscribe/>  
       </div>
 
       <div className="overlay"></div>
