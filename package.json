@@ -12,6 +12,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.3",
     "fs": "^0.0.1-security",
     "js-confetti": "^0.12.0",
     "moment": "^2.24.0",

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
+import { sendEmail } from '../components/sendEmail';
 
 const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, global  }) => {
 
@@ -328,6 +329,16 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
     }
   }
 
+  function sendMail(){
+    try {
+      sendEmail('janine.zielman@icloud.com', 'Learning Outcome Suggestion', document.getElementById('final-text').innerText);
+      // res.status(200).json({ message: 'Email sent successfully' });
+    } catch (error) {
+      console.error(error);
+      // res.status(500).json({ message: 'Internal Server Error' });
+    }
+  }
+
 
   return (
     <Layout global={global}>
@@ -512,7 +523,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
         <div className="buttons">
         {/* Show <div className="button" onClick={refresh}>Another Option</div> */}
           <div className="button"><a href={`/?start=true`}>Another one!</a></div>
-          {/* <div className="button"><a href={`/`}>Email Me</a></div> */}
+          <div className="button" onClick={sendMail}>Email Me</div>
         </div>
       </div>
 

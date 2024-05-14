@@ -1,11 +1,8 @@
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
-  images: {
-    loader: "default",
-    domains: ["localhost"],
-  },
-}
+module.exports = {
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
 
-module.exports = nextConfig
+    return config;
+  },
+};
