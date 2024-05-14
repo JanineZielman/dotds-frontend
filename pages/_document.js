@@ -14,6 +14,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff"/>
           <script src="https://cdn.cloudmersive.com/jsclient/cloudmersive-nlp-client.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
         </Head>
         <body>
           <Main />

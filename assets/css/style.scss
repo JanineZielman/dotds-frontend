@@ -3,6 +3,16 @@
   src: url("CommitMono-400-Regular.woff2") format("woff2");
 }
 
+::-moz-selection { /* Code for Firefox */
+  // color: red;
+  background: orange;
+}
+
+::selection {
+  // color: white;
+  background: orange;
+}
+
 body{
   background: #222;
   color: #fff;

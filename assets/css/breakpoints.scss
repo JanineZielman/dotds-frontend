@@ -28,6 +28,7 @@
     .button{
      width: fit-content;
      margin-bottom: 24px;
+     padding: 10px 20px;
     }
   }
   .menu-icon.activeMenu{
@@ -35,5 +36,17 @@
   }
   .menu-icon{
     font-size: 24px;
+  }
+  body{
+    font-size: 14px;
+  }
+  #result{
+    p{
+      font-size: 14px;
+    }
+  }
+  #final-text{
+    font-size: 28px;
+    line-height: 1.4;
   }
 }

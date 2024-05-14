@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "js-confetti": "^0.12.0",
     "moment": "^2.24.0",
     "next": "^11.0.0",
     "qs": "^6.10.1",
