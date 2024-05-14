@@ -78,7 +78,7 @@ window.addEventListener("load", (event) => {
     document.getElementById('step6').style.display = 'none';
     document.getElementById('result').style.display = 'block';
     document.getElementById('topbar').style.display = 'none';
-    final = `create a grammatically correct sentence using the following words as a base: "At the end of this assignment, students will be able to ${step1} a(n) ${step2}, demonstrating ${step6} ${step3} of ${step4}ing through ${step5}."`
+    final = `create a grammatically correct sentence using the following words as a base: At the end of this assignment, students will be able to ${step1} a(n) ${step2}, demonstrating ${step6} ${step3} of ${step4}ing through ${step5}.`
     // document.getElementById('final-text').innerText = final
   }
 

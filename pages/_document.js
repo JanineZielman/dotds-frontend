@@ -15,6 +15,13 @@ class MyDocument extends Document {
           <script src="https://cdn.cloudmersive.com/jsclient/cloudmersive-nlp-client.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+          <script id="mcjs"
+            dangerouslySetInnerHTML={{
+              __html: `
+              !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dd1ef024e5705adde078bb85a/78f57ea908eb7d6d066328d23.js");
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />

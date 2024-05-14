@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import { fetchAPI } from "../lib/api"
-import { sendEmail } from '../components/sendEmail';
 
 const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, global  }) => {
 
@@ -330,13 +329,7 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
   }
 
   function sendMail(){
-    try {
-      sendEmail('janine.zielman@icloud.com', 'Learning Outcome Suggestion', document.getElementById('final-text').innerText);
-      // res.status(200).json({ message: 'Email sent successfully' });
-    } catch (error) {
-      console.error(error);
-      // res.status(500).json({ message: 'Internal Server Error' });
-    }
+    
   }
 
 
@@ -347,7 +340,6 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       <div id="landing-page" className="wrapper">
         <div className="canvas">
           <h2 className="note">Create a learning goal</h2>
-          <div className="line"></div>
           <a className="next" id="how-link" href="?start=true">Start</a>
         </div>
         <div className="balls" id="balls">
