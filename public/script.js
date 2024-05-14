@@ -1,5 +1,6 @@
 window.addEventListener("load", (event) => {
   document.getElementById('step0').style.visibility = 'hidden';
+  document.getElementById('step01').style.display = 'none';
   document.getElementById('step1').style.display = 'none';
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step3').style.display = 'none';

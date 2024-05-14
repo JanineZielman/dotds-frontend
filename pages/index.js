@@ -21,7 +21,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       yearIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
    
-    window.location.href = current + '&yearIds=' + yearIds + '&step0=' + year.replaceAll('undefined', '') ;
+    if(yearIds.length > 0){
+      window.location.href = current + '&yearIds=' + yearIds + '&step0=' + year.replaceAll('undefined', '') ;
+    }
   }
 
   function getStep01(event) {
@@ -39,8 +41,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
       subject += `${active[i].innerText.replace(active[i].getElementsByTagName('span')[0]?.innerText, '')}`;
       subjectIds.push(active[i].getElementsByTagName('span')[0]?.innerText)
     }
-   
-    window.location.href = current + '&subjectIds=' + subjectIds + '&step01=' + subject.replaceAll('undefined', '') ;
+    if(subjectIds.length > 0){
+      window.location.href = current + '&subjectIds=' + subjectIds + '&step01=' + subject.replaceAll('undefined', '') ;
+    }
   }
 
   function getStep1(event) {
@@ -91,7 +94,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ')
+      if(itemIds.length > 0){
+        window.location.href = current + '&step1Ids=' + itemIds +  '&step1=' + input.replaceAll('undefined', ' ')
+      }
     }
   }
   
@@ -140,7 +145,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ');
+      if(itemIds.length > 0){
+        window.location.href = current + '&step2Ids=' + itemIds + '&step2=' + input.replaceAll('undefined', ' ');
+      }
     } 
     
   }
@@ -190,7 +197,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ');
+      if(itemIds.length > 0){
+        window.location.href = current + '&step3Ids=' + itemIds + '&step3=' + input.replaceAll('undefined', ' ');
+      }
     }
   }
   
@@ -239,7 +248,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ');
+      if(itemIds.length > 0){
+        window.location.href = current + '&step4Ids=' + itemIds + '&step4=' + input.replaceAll('undefined', ' ');
+      }
     }
   }
   
@@ -288,7 +299,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ');
+      if(itemIds.length > 0){
+        window.location.href = current + '&step5Ids=' + itemIds + '&step5=' + input.replaceAll('undefined', ' ');
+      }
     }
   }
   
@@ -337,7 +350,9 @@ const Home = ({ step1, step2, step3, step4, step5, step6, years, subjects, globa
           } , 1000)
         )
     } else {
-      window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ');
+      if(itemIds.length > 0){
+        window.location.href = current + '&step6Ids=' + itemIds + '&step6=' + input.replaceAll('undefined', ' ');
+      }
     }
   }
 
